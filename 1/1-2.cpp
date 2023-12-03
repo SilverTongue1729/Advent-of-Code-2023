@@ -96,11 +96,9 @@ void solve(){
       if (dig!=-1) break;
     }
     ans += 10*dig;
-    cerr<<dig;
     reverse(all(s));
     dig=-1;
     for_(i,0,n){
-      print(i);
       if (isdigit(s[i])) dig = s[i]-'0';
       else if (s.substr(i,3) == "orez") dig = 0;
       else if (s.substr(i,3) == "eno") dig = 1;
@@ -115,7 +113,6 @@ void solve(){
       
       if (dig!=-1) break;
     }
-    cerr<<dig<<nl;
     ans += dig;
   } while (cin.eof() == false);
   
