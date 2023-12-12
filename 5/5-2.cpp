@@ -92,11 +92,9 @@ void solve(){
       new_seeds.pb(s, e);
   }
   seeds = new_seeds;
-  print(seeds);
   
   for_(maps_num,0,7){
     getline(cin, temp);
-    print(temp);
     
     // vector of maps, each map is a range {{destination, start}, length}
     // each range maps [start, start+length) to [destination, destination+length)
@@ -114,20 +112,13 @@ void solve(){
     sort(all(vm), [](const pair<pll,ll>& a, const pair<pll,ll>& b){
       return a.ff.ss < b.ff.ss;
     });
-    
-    cerr<<"vm: "<<nl;
-    for (auto& [p,l] : vm) cerr<<p<<" "<<l<<nl;
-    
+        
     // using two pointers, map ranges in seeds to new_seeds using vm
     new_seeds.clear();
     ll i=0;
     for (auto [s,e]: seeds){
-      cerr<<"s,e: "<<s<<" "<<e<<nl;
-      print(i);
       for (;i<sz(vm) and vm[i].ff.ss<=e;i++){
-        print(vm[i]);
         if (s>=vm[i].ff.ss+vm[i].ss) continue;  // not intersecting
-        print(i);
         if (s<vm[i].ff.ss) new_seeds.pb(s, vm[i].ff.ss-1); // seed starts before the range
         ll diff = vm[i].ff.ff - vm[i].ff.ss;
         new_seeds.pb(max(s, vm[i].ff.ss) + diff, min(e, vm[i].ff.ss+vm[i].ss-1) + diff);
@@ -148,8 +139,6 @@ void solve(){
         new_seeds.pb(s, e);
     }
     seeds = new_seeds;
-    print(seeds);
-    cerr<<nl;
     
   }
   
