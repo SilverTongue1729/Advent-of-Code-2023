@@ -1,5 +1,3 @@
 .vscode
-.vscode/*
-
-*.in
-*.out
+**/*.in
+**/*.out
